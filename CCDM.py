@@ -1,5 +1,5 @@
 import numpy as np
-from optic.comm.codeCandidate import sourceInterval, codeCandidate, codeCandidateList
+from codeCandidate import sourceInterval, codeCandidate, codeCandidateList
 
 
 def updateSrcInterval(srcInterval, srcProbability, srcSymbols):
