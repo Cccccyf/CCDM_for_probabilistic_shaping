@@ -1,9 +1,7 @@
 import numpy as np
-from optic.comm.modulation import grayMapping
+from utils import grayMapping
 from CCDM import encode
 from CCDMUtils import initialize
-from optic.plot import pconst, plotPSD
-from optic.dsp.core import pnorm
 
 
 
