@@ -3,7 +3,6 @@ import numpy as np
 
 def iterDiscreteQuant(pOpt, nSyms):
     """
-    将给定概率离散化为整数计数，并获得离散化后的概率分布
     Parameters
     ----------
     pOpt:   ndarray
@@ -17,7 +16,7 @@ def iterDiscreteQuant(pOpt, nSyms):
     -------
 
     """
-    m = len(pOpt)  # 符号种类数量
+    m = len(pOpt)  
     ni = np.zeros(m)
     t = np.log(np.reciprocal(pOpt))
     pIterDisQuant = np.copy(t)
