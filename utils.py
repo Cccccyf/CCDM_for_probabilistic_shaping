@@ -1,4 +1,8 @@
 import numpy as np
+"""
+Edson Porto da Silva, Adolfo Fernandes Herbster. "OptiCommPy: Open-source Simulation of Fiber Optic Communications with Python", Journal of Open Source Software, 9(98), 6600, (2024) 
+https://doi.org/10.21105/joss.06600
+"""
 
 def pamConst(M):
     """
@@ -206,7 +210,7 @@ def grayMapping(M, constType):
         const = apskConst(M)
 
     const = const.reshape(M, 1)
-    const_ = np.zeros((M, 2), dtype=complex)            # 实部 虚部分开存储？
+    const_ = np.zeros((M, 2), dtype=complex)           
 
     for ind in range(M):
         const_[ind, 0] = const[ind, 0]  # complex constellation symbol
