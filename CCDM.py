@@ -4,7 +4,6 @@ from codeCandidate import sourceInterval, codeCandidate, codeCandidateList
 
 def updateSrcInterval(srcInterval, srcProbability, srcSymbols):
     """
-    根据到来的新的bit——src_symbols确定当前01比特序列所处的区间
     Parameters
     ----------
     srcInterval:   sourceInterval
@@ -201,7 +200,6 @@ def finaliseCodeSymbols(srcInterval, codeCandiList, ni, indexConstDict):
 
 def encode(srcSymbols, n, ni, indexConstDict):
     """
-    ccdm编码返回编码结果
     Parameters
     ----------
     indexConstDict
@@ -215,7 +213,7 @@ def encode(srcSymbols, n, ni, indexConstDict):
     -------
 
     """
-    k = len(ni)  # maybe len?
+    k = len(ni)  
     srcProbability = [0.5, 0.5]  # probability of 0, 1
     srcInterval = sourceInterval()  # initialise the interval
 
@@ -228,7 +226,7 @@ def encode(srcSymbols, n, ni, indexConstDict):
     codeSymbols = []  # generated sequence
     pi = np.zeros(k)
 
-    # 构建code_candidate_list
+    # code_candidate_list
     for i in range(k):
         pi[i] = float(niCopy[i] / n)
         codeCandi = codeCandidate()
@@ -241,7 +239,6 @@ def encode(srcSymbols, n, ni, indexConstDict):
         codeCandi.symbols.append(i + 1)
         codeCandiList.codeCandidate.append(codeCandi)
 
-    # 根据原比特流确定输出序列
     for symbol in srcSymbols:
         srcInterval = updateSrcInterval(srcInterval, srcProbability, symbol)
         newSym, srcInterval, codeCandiList = checkForOutputAndRescale(srcInterval, codeCandiList,
@@ -249,7 +246,6 @@ def encode(srcSymbols, n, ni, indexConstDict):
         if len(newSym) != 0:
             codeSymbols.extend(newSym)
 
-    # 补全序列使其达到目标长度
     finSymbols = finaliseCodeSymbols(srcInterval, codeCandiList, ni, indexConstDict)  # padding generated sequence
     codeSymbols.extend(finSymbols)
     return codeSymbols
@@ -318,7 +314,7 @@ def decode(codeSymbols, ni, m):
                     srcInterval.upperBound = newBorder
 
                 if srcSymbolIndex >= m:
-                    return srcSymbols  # 达到目标译码数量返回
+                    return srcSymbols  
 
                 newBorder = srcInterval.lowerBound + (srcInterval.upperBound - srcInterval.lowerBound) * 0.5
 
