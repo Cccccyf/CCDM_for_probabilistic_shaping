@@ -26,10 +26,10 @@ class probabilisticShaping:
         self.symbolNum = symbolNum
         self.const = getMQamConstellations(self.M)
         self.probabilities = self.genProbabilities()
-        # 扩大概率整形星座图，使得整形信号的平均功率与原信号相同
+        # enlarge the constellation of probabilistic shaping to make the shaped signals have equal power as signals following uniform distrition 
         self.const = np.sqrt(np.mean(np.abs(self.const) ** 2) / np.sum(np.abs(self.const) ** 2 * self.probabilities)) * self.const
-        self.indexConstDict = {}      # 编码用
-        self.constIndexDict = {}      # 解码用
+        self.indexConstDict = {}      
+        self.constIndexDict = {}      #
         self.initDict()
 
     def initDict(self):
